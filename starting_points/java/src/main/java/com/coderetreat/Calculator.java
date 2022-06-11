@@ -12,7 +12,11 @@ public class Calculator {
         }
         if (stringNumber.contains(",")) {
                 String[] parts = stringNumber.split(",");
-                return Integer.parseInt(parts[0]) + Integer.parseInt(parts[0]);
+                int sum = 0;
+                for (String part: parts) {
+                    sum += Integer.parseInt(part);
+                }
+                return sum;
             } else {
             return Integer.parseInt(stringNumber);
         }
