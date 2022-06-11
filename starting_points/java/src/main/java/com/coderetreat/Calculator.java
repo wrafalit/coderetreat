@@ -10,6 +10,9 @@ public class Calculator {
         if (stringNumber.length() == 0) {
             return 0;
         }
+        if (stringNumber.contains("\n")) {
+            stringNumber = stringNumber.replace("\n",",");
+        }
         if (stringNumber.contains(",")) {
                 String[] parts = stringNumber.split(",");
                 int sum = 0;
