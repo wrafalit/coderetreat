@@ -22,6 +22,8 @@ public class CalculatorTest {
         assertEquals(10,c.Add("0,1\n2,3\n4"));
         assertEquals(60,c.Add("10,20\n30"));
 
-
+//        Step 4
+        assertEquals(3,c.Add("//;\n1;2"));
+        assertEquals(70,c.Add("//;\n10;20\n30,10"));
     }
 }
