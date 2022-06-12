@@ -38,7 +38,9 @@ public class Calculator {
                 }
                 System.out.println(negative);
                 if (negative.isEmpty()) {
-                    sum += Integer.parseInt(part);
+                    if (Integer.parseInt(part) <= 1000) {
+                        sum += Integer.parseInt(part);
+                    }
                 }
             }
             if (!negative.isEmpty()){
