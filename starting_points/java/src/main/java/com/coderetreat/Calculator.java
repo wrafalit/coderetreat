@@ -13,35 +13,40 @@ public class Calculator {
             return 0;
         }
 
-        stringNumber = Delimiters (stringNumber);
-        stringNumber = nBetween (stringNumber, delimiter);
+
+        //  Delimiters
+        if (stringNumber.contains("//")) {
+            String nDelimiter = stringNumber.substring(2,stringNumber.indexOf("\n"));
+            stringNumber = stringNumber.substring(stringNumber.indexOf("\n")+1);
+            stringNumber = stringNumber.replace(nDelimiter,",");
+        }
+
+
+        //  nBetween
+        if (stringNumber.contains("\n")) {
+            stringNumber = stringNumber.replace("\n",delimiter);
+        }
 
         if (stringNumber.contains(delimiter)) {
-                String[] parts = stringNumber.split(delimiter);
-                int sum = 0;
-                for (String part: parts) {
+            String[] parts = stringNumber.split(delimiter);
+            int sum = 0;
+            String negative = "";
+            for (String part: parts) {
+                if (Integer.parseInt(part)<0) {
+                    negative += part +" ";
+                    continue;
+                }
+                System.out.println(negative);
+                if (negative.isEmpty()) {
                     sum += Integer.parseInt(part);
                 }
-                return sum;
-            } else {
+            }
+            if (!negative.isEmpty()){
+                throw new IllegalArgumentException("negatives not allowed " +negative);
+            }
+            return sum;
+        } else {
             return Integer.parseInt(stringNumber);
         }
     }
-
-    private String nBetween(String str, String delimiter) {
-        if (str.contains("\n")) {
-            str = str.replace("\n",delimiter);
-        }
-        return  str;
-    }
-
-    private String Delimiters(String str) {
-        if (str.contains("//")) {
-            String delimiter = str.substring(2,str.indexOf("\n"));
-            str = str.substring(str.indexOf("\n")+1);
-            str = str.replace(delimiter,",");
-        }
-        return str;
-    }
-
 }

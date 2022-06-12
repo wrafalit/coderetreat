@@ -25,5 +25,13 @@ public class CalculatorTest {
 //        Step 4
         assertEquals(3,c.Add("//;\n1;2"));
         assertEquals(70,c.Add("//;\n10;20\n30,10"));
+
+    }
+
+//         Step 5
+    @Test(expected = IllegalArgumentException.class)
+    public void testAdd2() throws Exception {
+        Calculator c = new Calculator();
+        c.Add("//;\n10;-20\n30,10");
     }
 }
